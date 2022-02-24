@@ -24,16 +24,11 @@ class UsuarioController extends UsuarioModel
         if ($consultaUsuario->rowCount() == 1) {
             $usuario = $consultaUsuario->fetch(PDO::FETCH_ASSOC);
 
-            $dados['ultimo_acesso'] = date('Y-m-d H:i:s');
-            DbModel::updateCondicional("usuarios", $dados,"pessoa_id = '{$usuario['pessoa_id']}'");
+            session_start(['name' => 'Cursos']);
+            $_SESSION['login_g'] = $usuario['nome'];
+            $_SESSION['nome_g'] = $usuario['nome'];
 
-            session_start(['name' => 'gesp']);
-            $_SESSION['login_g'] = $usuario['usuario'];
-            $_SESSION['usuario_id_g'] = $usuario['pessoa_id'];
-            $_SESSION['nome_g'] = $usuario['nome_completo'];
-            $_SESSION['acesso_g'] = $usuario['nivel_acesso_id'];
-
-            MainModel::gravarLog('Fez Login');
+//            MainModel::gravarLog('Fez Login');
 
             if (!$modulo) {
                 return $urlLocation = "<script> window.location='inicio/inicio' </script>";
@@ -172,9 +167,8 @@ class UsuarioController extends UsuarioModel
 
         $id = MainModel::decryption($id);
         return $this->consultaSimples("
-            SELECT u.pessoa_id, pe.nome_completo, u.usuario, u.nivel_acesso_id, u.senha
+            SELECT *
             FROM usuarios u 
-            INNER JOIN pessoas pe on u.pessoa_id = pe.id
             WHERE u.pessoa_id = '$id'")->fetchObject();
     }
 
@@ -190,10 +184,8 @@ class UsuarioController extends UsuarioModel
     public function listaUsuarios(int $publicado)
     {
         return DbModel::consultaSimples("
-            SELECT u.pessoa_id, pe.nome_completo, u.usuario, pe.rg, pe.email, pt.telefones 
-             FROM pessoas pe
-             INNER JOIN usuarios u on u.pessoa_id = pe.id
-             LEFT JOIN pessoa_telefones pt on pt.pessoa_id = pe.id
+            SELECT * 
+             FROM usuarios 
              WHERE u.publicado = '$publicado'
         ")->fetchAll(PDO::FETCH_OBJ);
     }

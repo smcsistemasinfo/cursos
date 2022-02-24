@@ -204,10 +204,10 @@ class MainModel extends DbModel
         return $string;
     }
 
-    public function gravarLog($descricao)
-    {
-        self::log($descricao);
-    }
+//    public function gravarLog($descricao)
+//    {
+//        self::log($descricao);
+//    }
 
     /**
      * Insere registro na tabela "log" do banco de dados
@@ -215,17 +215,17 @@ class MainModel extends DbModel
      * <p>Registramos o comando SQL de <strong>UPDATE</strong> ou <strong>INSERT</strong>,
      * se o usuário <strong>FEZ LOGIN</strong>, ou <strong>FEZ LOGOUT</strong></p>
      */
-    protected function log($descricao)
-    {
-        $dadosLog = [
-            'usuario_id' => $_SESSION['usuario_id_g'],
-            'ip' => $_SERVER['REMOTE_ADDR'],
-            'data' => date('Y-m-d H:i:s'),
-            'descricao' => $descricao
-        ];
-
-        DbModel::insert('log', $dadosLog);
-    }
+//    protected function log($descricao)
+//    {
+//        $dadosLog = [
+//            'usuario_id' => $_SESSION['usuario_id_g'],
+//            'ip' => $_SERVER['REMOTE_ADDR'],
+//            'data' => date('Y-m-d H:i:s'),
+//            'descricao' => $descricao
+//        ];
+//
+//        DbModel::insert('log', $dadosLog);
+//    }
 
     /**
      * <p>Executa uma série de comandos de tratamento da string para inserção no banco de dados</p>

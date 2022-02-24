@@ -9,7 +9,7 @@ $view = new ViewsController();
 ?>
 <!-- Brand Logo -->
 <a href="<?= SERVERURL ?>inicio" class="brand-link">
-    <img src="<?= SERVERURL ?>views/dist/img/logo.png" alt="GesP Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <img src="<?= SERVERURL ?>views/dist/img/logo.png" alt="CURSOS Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
     <span class="brand-text font-weight-light"><?= NOMESIS ?></span>
 </a>
 

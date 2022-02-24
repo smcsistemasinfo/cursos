@@ -5,9 +5,8 @@ class UsuarioModel extends MainModel
 {
     protected function getUsuario($dados) {
         $pdo = parent::connection();
-        $sql = "SELECT u.*, p.nome_completo FROM usuarios AS u
-            INNER JOIN pessoas AS p ON u.pessoa_id = p.id
-            WHERE usuario = :usuario AND senha = :senha";
+        $sql = "SELECT u.* FROM usuarios AS u
+            WHERE nome = :usuario AND senha = :senha";
         $statement = $pdo->prepare($sql);
         $statement->bindParam(":usuario", $dados['usuario']);
         $statement->bindParam(":senha", $dados['senha']);

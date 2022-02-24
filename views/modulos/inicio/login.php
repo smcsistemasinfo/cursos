@@ -11,7 +11,7 @@ if (isset($_POST['usuario']) && (isset($_POST['senha']))) {
         <div class="card-header bg-dark">
             <a href="<?= SERVERURL ?>inicio" class="brand-link">
                 <img src="<?= SERVERURL ?>views/dist/img/logo.png" alt="GesP Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <h5><span class="brand-text font-weight-light"><?= NOMESIS ?> - Gestão de Pessoas</span></h5>
+                <h5><span class="brand-text font-weight-light">Gestão de Cursos</span></h5>
             </a>
         </div>
         <div class="card-body register-card-body">

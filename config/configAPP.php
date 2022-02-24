@@ -1,9 +1,9 @@
 <?php
     define('SERVER', "127.0.0.1");
 
-    define('DB1', "gesp");
-    define('USER1', "lorelei");
-    define('PASS1', "lore!@#");
+    define('DB1', "curso");
+    define('USER1', "root");
+    define('PASS1', "");
 
     define('SGDB1', "mysql:host=".SERVER.";dbname=".DB1);
 

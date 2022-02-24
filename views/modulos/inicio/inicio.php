@@ -24,7 +24,7 @@ if (isset($_POST['_method'])) {
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Boas vindas ao GesP</h1>
+                <h1 class="m-0 text-dark">Boas vindas ao CURSOS</h1>
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -39,7 +39,7 @@ if (isset($_POST['_method'])) {
                 <!-- Horizontal Form -->
                 <div class="card card-info">
                     <div class="card-header">
-                        <h3 class="card-title">Pesquisa para emissão de aviso de férias</h3>
+                        <h3 class="card-title"></h3>
                     </div>
                     <!-- /.card-header -->
                     <form id="pesquisar" method="post" class="has-validation">
