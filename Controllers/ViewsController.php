@@ -1,7 +1,7 @@
 <?php
-namespace Gesp\Controllers;
+namespace Curso\Controllers;
 
-use Gesp\Models\ViewsModel;
+use Curso\Models\ViewsModel;
 
 class ViewsController extends ViewsModel
 {

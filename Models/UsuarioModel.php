@@ -1,14 +1,14 @@
 <?php
-namespace Gesp\Models;
+namespace Curso\Models;
 
 class UsuarioModel extends MainModel
 {
     protected function getUsuario($dados) {
         $pdo = parent::connection();
-        $sql = "SELECT u.* FROM usuarios AS u
-            WHERE nome = :usuario AND senha = :senha";
+        $sql = "SELECT * FROM usuarios
+            WHERE nome = :nome AND senha = :senha";
         $statement = $pdo->prepare($sql);
-        $statement->bindParam(":usuario", $dados['usuario']);
+        $statement->bindParam(":nome", $dados['nome']);
         $statement->bindParam(":senha", $dados['senha']);
         $statement->execute();
         return $statement;

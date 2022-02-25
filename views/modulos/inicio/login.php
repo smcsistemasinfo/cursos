@@ -1,5 +1,5 @@
 <?php
-use Gesp\Controllers\UsuarioController;
+use Curso\Controllers\UsuarioController;
 if (isset($_POST['usuario']) && (isset($_POST['senha']))) {
     //require_once "./controllers/UsuarioController.php";
     $login = new UsuarioController();
@@ -10,7 +10,7 @@ if (isset($_POST['usuario']) && (isset($_POST['senha']))) {
     <div class="card">
         <div class="card-header bg-dark">
             <a href="<?= SERVERURL ?>inicio" class="brand-link">
-                <img src="<?= SERVERURL ?>views/dist/img/logo.png" alt="GesP Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="<?= SERVERURL ?>views/dist/img/logo.png" alt="Curso Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <h5><span class="brand-text font-weight-light">Gestão de Cursos</span></h5>
             </a>
         </div>

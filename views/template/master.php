@@ -1,7 +1,7 @@
 <?php
 
-use Gesp\Controllers\UsuarioController;
-use Gesp\Controllers\ViewsController;
+use Curso\Controllers\UsuarioController;
+use Curso\Controllers\ViewsController;
 
 $template = new ViewsController();
 

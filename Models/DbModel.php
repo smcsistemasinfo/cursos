@@ -1,5 +1,5 @@
 <?php
-namespace Gesp\Models;
+namespace Curso\Models;
 
 use PDO;
 use PDOStatement;

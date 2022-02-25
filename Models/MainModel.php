@@ -1,9 +1,9 @@
 <?php
-namespace Gesp\Models;
+namespace Curso\Models;
 
 use DateTime;
 use PDO;
-use Gesp\Models\DbModel;
+use Curso\Models\DbModel;
 
 class MainModel extends DbModel
 {

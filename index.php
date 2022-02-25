@@ -4,7 +4,7 @@ $pedidoAjax = false;
 require_once "config/configGeral.php";
 require_once "config/autoload.php";
 
-use Gesp\Controllers\ViewsController;
+use Curso\Controllers\ViewsController;
 
 $template = new ViewsController();
 

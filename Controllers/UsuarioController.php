@@ -1,29 +1,29 @@
 <?php
-namespace Gesp\Controllers;
 
-use Gesp\Models\UsuarioModel;
-use Gesp\Models\MainModel;
-use Gesp\Models\DbModel;
+namespace Curso\Controllers;
+
+use Curso\Models\UsuarioModel;
+use Curso\Models\MainModel;
+use Curso\Models\DbModel;
 use PDO;
 
 class UsuarioController extends UsuarioModel
 {
 
-    public function iniciaSessao($modulo = false, $edital = null) {
-        $email = MainModel::limparString($_POST['usuario']);
+    public function iniciaSessao($modulo = false, $edital = null)
+    {
+        $usuario = MainModel::limparString($_POST['usuario']);
         $senha = MainModel::limparString($_POST['senha']);
         $senha = MainModel::encryption($senha);
 
         $dadosLogin = [
-            'usuario' => $email,
+            'nome' => $usuario,
             'senha' => $senha
         ];
 
         $consultaUsuario = UsuarioModel::getUsuario($dadosLogin);
-
         if ($consultaUsuario->rowCount() == 1) {
             $usuario = $consultaUsuario->fetch(PDO::FETCH_ASSOC);
-
             session_start(['name' => 'Cursos']);
             $_SESSION['login_g'] = $usuario['nome'];
             $_SESSION['nome_g'] = $usuario['nome'];
@@ -31,7 +31,7 @@ class UsuarioController extends UsuarioModel
 //            MainModel::gravarLog('Fez Login');
 
             if (!$modulo) {
-                return $urlLocation = "<script> window.location='inicio/inicio' </script>";
+                return "<script> window.location='inicio/inicio' </script>";
             } else {
                 if ($modulo == 8) {
                     $_SESSION['edital_s'] = $edital;
@@ -49,9 +49,10 @@ class UsuarioController extends UsuarioModel
         return MainModel::sweetAlert($alerta);
     }
 
-    public function forcarFimSessao() {
+    public function forcarFimSessao()
+    {
         session_destroy();
-        return header("Location: ".SERVERURL);
+        return header("Location: " . SERVERURL);
     }
 
     /* cadastra */
@@ -65,7 +66,7 @@ class UsuarioController extends UsuarioModel
             $alerta = [
                 'alerta' => 'sucesso',
                 'titulo' => 'Usuário Cadastrado!',
-                'texto' => 'Senha inicial Gesp@2022',
+                'texto' => 'Senha inicial Curso@2022',
                 'tipo' => 'success',
                 'location' => SERVERURL . 'administrativo/usuario_ativo_lista'
             ];
@@ -81,7 +82,8 @@ class UsuarioController extends UsuarioModel
         return MainModel::sweetAlert($alerta);
     }
 
-    public function remover($pessoa_id){
+    public function remover($pessoa_id)
+    {
 
         $pessoa_id = $this->decryption($pessoa_id);;
         $apagaUsuario = $this->apagaEspecial('usuarios', 'pessoa_id', $pessoa_id);
@@ -106,7 +108,8 @@ class UsuarioController extends UsuarioModel
     }
 
     /* edita */
-    public function editar($dados, $pessoa_id){
+    public function editar($dados, $pessoa_id)
+    {
 
         unset($dados['_method']);
         unset($dados['pessoa_id']);
@@ -128,27 +131,27 @@ class UsuarioController extends UsuarioModel
                 'titulo' => 'Erro!',
                 'texto' => 'Erro ao salvar!',
                 'tipo' => 'error',
-                'location' => SERVERURL.'inicio/edita'
+                'location' => SERVERURL . 'inicio/edita'
             ];
         }
         return MainModel::sweetAlert($alerta);
     }
 
     /**
-     * <p>Função para trocar a senha do usuário para Gesp@2022</p>
+     * <p>Função para trocar a senha do usuário para Curso@2022</p>
      * @param int|string $pessoa_id
      * @return string
      */
     public function trocarSenha($pessoa_id): string
     {
         $pessoa_id = MainModel::decryption($pessoa_id);
-        $dados['senha'] = MainModel::encryption('Gesp@2022');
+        $dados['senha'] = MainModel::encryption('Curso@2022');
         $troca = DbModel::updateEspecial('usuarios', $dados, "pessoa_id", $pessoa_id);
         if ($troca->rowCount() >= 1 || DbModel::connection()->errorCode() == 0) {
             $alerta = [
                 'alerta' => 'sucesso',
                 'titulo' => 'Usuário',
-                'texto' => 'Senha alterada para Gesp@2022',
+                'texto' => 'Senha alterada para Curso@2022',
                 'tipo' => 'success',
                 'location' => SERVERURL . 'administrativo/usuario_cadastro&id=' . MainModel::decryption($pessoa_id)
             ];
@@ -163,7 +166,8 @@ class UsuarioController extends UsuarioModel
         return MainModel::sweetAlert($alerta);
     }
 
-    public function recuperarUsuario($id) {
+    public function recuperarUsuario($id)
+    {
 
         $id = MainModel::decryption($id);
         return $this->consultaSimples("
@@ -172,7 +176,8 @@ class UsuarioController extends UsuarioModel
             WHERE u.pessoa_id = '$id'")->fetchObject();
     }
 
-    public function recuperaEmail($email){
+    public function recuperaEmail($email)
+    {
         return UsuarioModel::getExisteEmail($email);
     }
 

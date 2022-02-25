@@ -1,6 +1,6 @@
 <?php
 
-use Gesp\Controllers\ViewsController;
+use Curso\Controllers\ViewsController;
 
 $view = new ViewsController();
 
