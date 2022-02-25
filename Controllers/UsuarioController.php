@@ -24,9 +24,10 @@ class UsuarioController extends UsuarioModel
         $consultaUsuario = UsuarioModel::getUsuario($dadosLogin);
         if ($consultaUsuario->rowCount() == 1) {
             $usuario = $consultaUsuario->fetch(PDO::FETCH_ASSOC);
-            session_start(['name' => 'Cursos']);
+            session_start(['name' => 'cursos']);
             $_SESSION['login_g'] = $usuario['nome'];
             $_SESSION['nome_g'] = $usuario['nome'];
+            $_SESSION['usuario_id_g'] = $usuario['id'];
 
 //            MainModel::gravarLog('Fez Login');
 

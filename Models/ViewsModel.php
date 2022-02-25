@@ -22,7 +22,8 @@ class ViewsModel
 
     protected function exibirViewModel($view, $modulo = "") {
         $whitelist = [
-            'inicio'
+            'inicio',
+            'logout'
         ];
         if (self::verificaModulo($modulo)) {
             if (in_array($view, $whitelist)) {
