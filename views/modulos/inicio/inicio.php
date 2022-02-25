@@ -1,24 +1,3 @@
-<?php
-use Curso\Controllers\Pessoa\FeriasController;
-
-$url = SERVERURL.'api/departamento_supervisao.php';
-$urlPdfs = SERVERURL.'api/gerar_pdfs_ferias.php';
-
-$feriasObj = new FeriasController();
-$busca = false;
-
-if (isset($_POST['_method'])) {
-    unset($_POST['_method']);
-    $departamento_id = $_POST['departamento_id'];
-    $resultados = $feriasObj->listar($_POST);
-    foreach ($_POST as $key => $pesquisa) {
-        if ($pesquisa !== "") {
-            $dado = str_replace('.', 'p', str_replace('/', 'b', str_replace('-', 't', $pesquisa)));
-        }
-    }
-    $busca = true;
-}
-?>
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="container-fluid">
