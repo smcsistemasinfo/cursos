@@ -1,7 +1,6 @@
 <?php
 use Curso\Controllers\UsuarioController;
 if (isset($_POST['usuario']) && (isset($_POST['senha']))) {
-    //require_once "./controllers/UsuarioController.php";
     $login = new UsuarioController();
     echo $login->iniciaSessao();
 }

@@ -1,0 +1,24 @@
+{
+  "name": "cursos",
+  "version": "1.0.0",
+  "description": "Teste de cadastro de cursos e pessoas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smcsistemasinfo/cursos.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smcsistemasinfo/cursos/issues"
+  },
+  "homepage": "https://github.com/smcsistemasinfo/cursos#readme",
+  "dependencies": {
+    "admin-lte": "3.1.0",
+    "jquery-mask-plugin": "1.14.16",
+    "moment": "^2.29.1"
+  }
+}
